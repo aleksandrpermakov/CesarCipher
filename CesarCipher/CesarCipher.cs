@@ -18,51 +18,47 @@ namespace CesarCipher
                 alphabet += i;
             }
         }
-        public string Cipher(string text)
+        public string Cipher(ref string  text)
         {
             string cipher_text = string.Empty;
-            for (int i = 0; i < alphabet.Length; i++)
+            for (int i = 0; i < text.Length; i++)
             {
-                for (int j = 0; j < text.Length; j++)
+                for (int j = 0; j < alphabet.Length; j++)
                 {
-                    if (i < alphabet.Length - key)
+                    if (alphabet[j] == text[i])
                     {
-                        cipher_text += alphabet[i + key];
-                        break;
-                    }
-                    else
-                    {
-                        cipher_text += alphabet[(i - alphabet.Length) + key];
-                        break;
+                        if (j < alphabet.Length - key)
+                        {
+                            cipher_text += alphabet[j + key];
+                            break;
+                        }
+                        else
+                        {
+                            cipher_text += alphabet[(j - alphabet.Length) + key];
+                            break;
+                        }
                     }
                 }
-               
-                
             }
-            return cipher_text;
+            text = cipher_text;
+            return text;
         }
         public string unCipher(string ciphertext)
         {
             string uncipher_text = string.Empty;
-            for (int i = 0; i < alphabet.Length; i++)
-            {
-                for (int j = 0; j < ciphertext.Length; j++)
-                {
-                    if (i >= key)
+            for(int j =  0; j < ciphertext.Length; j++)
+            { 
+                 for (int i = key; i < alphabet.Length + key; i++)
+                 {
+                    if (alphabet[i] == ciphertext[j])
                     {
-                        uncipher_text += alphabet[i - key];
+                        uncipher_text += alphabet[(i - key)];
                         break;
                     }
-                    else
-                    {
-                        uncipher_text += alphabet[i] ;
-                        break;
-                    }
-                }
-                
-                
+                 }
             }
-            return uncipher_text;
+            ciphertext = uncipher_text;
+            return ciphertext;
         }
     }
 }
