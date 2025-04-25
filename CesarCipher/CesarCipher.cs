@@ -18,45 +18,51 @@ namespace CesarCipher
                 alphabet += i;
             }
         }
-        public char Cipher(char symbol)
+        public string Cipher(string text)
         {
-            char cipher_symbol = symbol;
+            string cipher_text = string.Empty;
             for (int i = 0; i < alphabet.Length; i++)
             {
-                if (symbol == alphabet[i])
+                for (int j = 0; j < text.Length; j++)
                 {
-                    if(i < alphabet.Length - key) 
+                    if (i < alphabet.Length - key)
                     {
-                        cipher_symbol = alphabet[i + key];
+                        cipher_text += alphabet[i + key];
+                        break;
                     }
                     else
                     {
-                        cipher_symbol = 
-                            alphabet[(i - alphabet.Length) + key];
+                        cipher_text += alphabet[(i - alphabet.Length) + key];
+                        break;
                     }
                 }
+               
+                
             }
-            return cipher_symbol;
+            return cipher_text;
         }
-        public char unCipher(char symbol)
+        public string unCipher(string ciphertext)
         {
-            char uncipher_symbol = symbol;
+            string uncipher_text = string.Empty;
             for (int i = 0; i < alphabet.Length; i++)
             {
-                if (symbol == alphabet[i])
+                for (int j = 0; j < ciphertext.Length; j++)
                 {
                     if (i >= key)
                     {
-                        uncipher_symbol = alphabet[i - key];
+                        uncipher_text += alphabet[i - key];
+                        break;
                     }
                     else
                     {
-                        uncipher_symbol =
-                            alphabet[(i + alphabet.Length) - key];
+                        uncipher_text += alphabet[i] ;
+                        break;
                     }
                 }
+                
+                
             }
-            return uncipher_symbol;
+            return uncipher_text;
         }
     }
 }

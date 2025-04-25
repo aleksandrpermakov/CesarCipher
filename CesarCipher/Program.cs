@@ -13,15 +13,11 @@ namespace CesarCipher
             CesarCipher cesarCipher = new CesarCipher();
             Console.WriteLine(cesarCipher.Alphabet);
             Console.WriteLine("Шифрование");
-            foreach (var symbol in cesarCipher.Alphabet)
-            {
-                Console.WriteLine($"{symbol} = {cesarCipher.Cipher(symbol)}");
-            }
+            string tmp = cesarCipher.Alphabet; // проверяю как шифрует алфавит
+            Console.WriteLine(cesarCipher.Cipher(tmp));
+            tmp = cesarCipher.Cipher(tmp);
             Console.WriteLine("Дешифровка");
-            foreach (var symbol in cesarCipher.Alphabet)
-            {
-                Console.WriteLine($"{symbol} = {cesarCipher.unCipher(symbol)}");
-            }
+            Console.WriteLine(cesarCipher.unCipher(tmp));
         }
     }
 }
