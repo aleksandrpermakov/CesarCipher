@@ -11,17 +11,9 @@ namespace CesarCipher
         static void Main(string[] args)
         {
             CesarCipher cesarCipher = new CesarCipher();
-            //Console.WriteLine(cesarCipher.Alphabet);
-            //Console.WriteLine("Шифрование");
-            //string tmp = cesarCipher.Alphabet; // проверяю как шифрует алфавит
-            //Console.WriteLine(cesarCipher.Cipher(tmp));
-            //tmp = cesarCipher.Cipher(tmp);
-            //Console.WriteLine("Дешифровка");
-            //Console.WriteLine(cesarCipher.unCipher(tmp));
-            string tmp = "ABER";
+            string tmp = "CLOZE";
             Console.WriteLine(cesarCipher.Cipher(ref tmp));
-          
-            Console.WriteLine(cesarCipher.unCipher(tmp));
+            Console.WriteLine(cesarCipher.unCipher(ref tmp));
         }
     }
 }

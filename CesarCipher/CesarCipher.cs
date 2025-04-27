@@ -43,17 +43,25 @@ namespace CesarCipher
             text = cipher_text;
             return text;
         }
-        public string unCipher(string ciphertext)
+        public string unCipher(ref string ciphertext)
         {
             string uncipher_text = string.Empty;
             for(int j =  0; j < ciphertext.Length; j++)
             { 
-                 for (int i = key; i < alphabet.Length + key; i++)
+                 for (int i = 0; i < alphabet.Length; i++)
                  {
                     if (alphabet[i] == ciphertext[j])
                     {
-                        uncipher_text += alphabet[(i - key)];
-                        break;
+                        if ((i - key) < 0)
+                        {
+                            uncipher_text += alphabet[(i + alphabet.Length) - key];
+                            break;
+                        }
+                        else
+                        {
+                            uncipher_text += alphabet[(i - key)];
+                            break;
+                        }
                     }
                  }
             }
