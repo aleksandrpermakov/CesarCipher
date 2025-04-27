@@ -10,10 +10,12 @@ namespace CesarCipher
     {
         string alphabet = string.Empty;
         int key = 3;
+        public void SetKey(int key) { this.key = key; }
+        public void SetAlphabet(string alphabet) { this.alphabet = alphabet; }
         public string Alphabet { get { return alphabet; } }
         public CesarCipher()
         {
-            for (char i = 'A'; i <= 'Z'; i++)
+            for (char i = '!'; i <= 'я'; i++) //для шифра будет применяться вся аски таблица
             {
                 alphabet += i;
             }
